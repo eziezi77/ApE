@@ -3,67 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Struk APE RELOAD</title>
+     <title>Struk APE RELOAD</title>
   <style>
     body {
-      margin: 0;
-      padding: 20px;
-      background: linear-gradient(135deg, royalblue, violet, crimson);
-      font-family: 'Courier New', monospace;
+      background-color: #c62828;
       color: white;
+      font-family: 'Courier New', monospace;
       text-align: center;
-    }
-
-    .struk-container {
-      background: linear-gradient(135deg, royalblue, violet, crimson);
-      border-radius: 15px;
       padding: 20px;
-      width: 320px;
+    }
+    .struk-container {
+      background-color: #b71c1c;
+      border: 3px solid silver;
+      box-shadow: 0 0 10px silver;
+      padding: 20px;
+      width: 300px;
       margin: 20px auto;
       display: none;
-      box-shadow: 0 0 15px rgba(255,255,255,0.4);
+      white-space: pre-wrap;
+      position: relative;
     }
-
     .logoBox {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      margin-bottom: 15px;
-    }
-
-    svg {
-      margin-bottom: 8px;
-    }
-
-    .logo-text {
-      color: white;
-      text-shadow: 2px 2px 4px black;
       font-weight: bold;
-      line-height: 1.1;
+      margin-bottom: 10px;
+      line-height: 1.3;
     }
-
-    .logo-text.ape {
-      font-size: 24px;
-      letter-spacing: 3px;
-      margin-top: 2px;
-      transform: translateY(2px);
-    }
-
-    .logo-text.reload {
-      font-size: 20px;
-      letter-spacing: 2px;
-      margin-top: -2px;
-      transform: translateY(-1px);
-    }
-
     input[type=number] {
       width: 100%;
       margin: 5px 0;
-      padding: 8px;
+      padding: 6px;
       border: none;
     }
-
     .btn {
       margin-top: 15px;
       background: white;
@@ -72,23 +45,6 @@
       border: none;
       font-weight: bold;
       cursor: pointer;
-    }
-
-    pre {
-      text-align: left;
-      white-space: pre-wrap;
-      word-break: break-word;
-      font-size: 14px;
-      text-shadow: 1px 1px 2px black;
-    }
-
-    .pdf-mode .struk-container {
-      box-shadow: none;
-    }
-
-    .pdf-mode .logo-text {
-      color: white;
-      text-shadow: 2px 2px 4px black;
     }
   </style>
 </head>
@@ -105,28 +61,17 @@
     <button type="button" class="btn" onclick="generateStruk()">Generate</button>
   </form>
 
+  <!-- PREVIEW STRUK -->
   <div class="struk-container" id="preview">
     <div class="logoBox">
-      <!-- SVG LOGO SEGITIGA BIRU DENGAN GLOW EMAS -->
-      <svg width="80" height="80" viewBox="0 0 100 100">
-        <defs>
-          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-            <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="gold"/>
-            <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="gold"/>
-          </filter>
-        </defs>
-        <polygon points="50,10 90,90 10,90"
-          fill="#0033cc"
-          stroke="gold"
-          stroke-width="4"
-          filter="url(#glow)" />
-      </svg>
-       <div class="logo-text ape">☆APE☆</div>
-   <div class="logo-text reload">●RELOAD●</div>
+      <div style="font-size: 26px;">🔺</div>
+       <div style="font-size: 22px;">☆ APE ☆</div>
+        <div style="font-size: 20px;">RELOAD</div>
     </div>
-    <pre id="output"></pre>
+    <div id="output"></div>
   </div>
 
+  <!-- Tombol download di luar preview -->
   <div id="pdf-btn" style="display:none;">
     <button class="btn" onclick="downloadPDF()">Download PDF</button>
   </div>
@@ -139,6 +84,7 @@
       const tgl = new Date();
       const tanggal = tgl.toLocaleDateString('id-ID');
       const jam = tgl.toLocaleTimeString('id-ID');
+
       const val = id => parseInt(document.getElementById(id).value) || 0;
 
       const pulsa = val("pulsa");
@@ -151,6 +97,7 @@
 
       const total = pulsa + paket + voucher + token + transfer + wifi;
       const kembali = bayar - total;
+
       const kode = "APE-" + Math.random().toString(36).substring(2, 8).toUpperCase();
 
       const struk = `
@@ -167,12 +114,13 @@ $ Transfer        Rp ${transfer}
 ------------------------------
 Total              Rp${total}
 ------------------------------
-
+Token: ${kode}
+------------------------------
 
 Terima kasih sudah menggunakan layanan kami
 
-
-                                 Eny.N`;
+               Eny.N
+      `;
 
       document.getElementById("output").textContent = struk;
       document.getElementById("preview").style.display = "block";
@@ -182,7 +130,6 @@ Terima kasih sudah menggunakan layanan kami
     async function downloadPDF() {
       const { jsPDF } = window.jspdf;
       const preview = document.getElementById("preview");
-      document.body.classList.add("pdf-mode");
 
       html2canvas(preview, { scale: 3 }).then(canvas => {
         const img = canvas.toDataURL("image/png");
@@ -193,10 +140,9 @@ Terima kasih sudah menggunakan layanan kami
         });
         pdf.addImage(img, "PNG", 0, 0, canvas.width, canvas.height);
         pdf.save("struk-APE-RELOAD.pdf");
-        document.body.classList.remove("pdf-mode");
       });
     }
   </script>
 
 </body>
-  </html>
+</html>
