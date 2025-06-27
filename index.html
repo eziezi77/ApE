@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -47,12 +48,14 @@
       font-size: 24px;
       letter-spacing: 3px;
       margin-top: 2px;
+      transform: translateY(2px);
     }
 
     .logo-text.reload {
       font-size: 20px;
       letter-spacing: 2px;
       margin-top: -2px;
+      transform: translateY(-1px);
     }
 
     input[type=number] {
@@ -96,7 +99,6 @@
 
   <div class="struk-container" id="preview">
     <div class="logoBox">
-      <!-- Logo segitiga biru + glow emas -->
       <svg width="80" height="80" viewBox="0 0 100 100">
         <defs>
           <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
@@ -155,8 +157,11 @@ $ Transfer        Rp ${transfer}
 Total              Rp${total}
 ------------------------------
 
-Terima kasih sudah menggunakan layanan kami
+==============================
+      ✅ STATUS : SUKSES ✅
+==============================
 
+Terima kasih sudah menggunakan layanan kami
 
                                  Eny.N`;
 
@@ -165,10 +170,10 @@ Terima kasih sudah menggunakan layanan kami
       document.getElementById("png-btn").style.display = "block";
     }
 
-    async function downloadPNG() {
+    function downloadPNG() {
       const preview = document.getElementById("preview");
       html2canvas(preview, { scale: 3 }).then(canvas => {
-        const link = document.createElement('a');
+        const link = document.createElement("a");
         link.download = "struk-APE-RELOAD.png";
         link.href = canvas.toDataURL("image/png");
         link.click();
