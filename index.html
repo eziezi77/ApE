@@ -1,5 +1,5 @@
-
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,109 +10,119 @@
       font-family: 'Segoe UI', sans-serif;
       color: white;
       overflow: hidden;
-    }#bgImage {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  z-index: -3;
-  opacity: 0.4;
-}
+    }
 
-#bgVideo {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  z-index: -2;
-}
+    #bgImage {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -3;
+      opacity: 0.4;
+    }
 
-#overlay {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: -1;
-}
+    #bgVideo {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -2;
+    }
 
-.content {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  padding: 40px 20px;
-}
+    #overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.25); /* Lebih terang */
+      z-index: -1;
+    }
 
-h1 {
-  margin: 10px 0;
-  font-size: 2.5em;
-  text-shadow: 2px 2px 5px #000;
-}
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 40px 20px;
+    }
 
-.slogan {
-  font-size: 1.5em;
-  font-weight: bold;
-  color: yellow;
-  margin: 20px 0;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
-}
+    h1 {
+      margin: 10px 0;
+      font-size: 2.5em;
+      text-shadow: 2px 2px 5px #000;
+    }
 
-.grid-img {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin: 30px 0;
-}
+    .slogan {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: yellow;
+      margin: 20px 0;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+    }
 
-.grid-img img {
-  width: 150px;
-  height: 150px;
-  border-radius: 16px;
-  object-fit: cover;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.7);
-}
+    .grid-img {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 30px 0;
+    }
 
-.wa-button {
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  background-color: #25D366;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
-  animation: smokePulse 4s infinite;
-  z-index: 2;
-}
+    .grid-img img {
+      width: 150px;
+      height: 150px;
+      border-radius: 16px;
+      object-fit: cover;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.7);
+    }
 
-.wa-button img {
-  width: 35px;
-  height: 35px;
-}
+    .wa-button {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      background-color: #25D366;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      animation: smokePulse 4s infinite;
+      z-index: 2;
+    }
 
-@keyframes smokePulse {
-  0% { box-shadow: 0 0 15px 5px rgba(255,255,255,0.1); }
-  50% { box-shadow: 0 0 30px 15px rgba(255,255,255,0.3); }
-  100% { box-shadow: 0 0 15px 5px rgba(255,255,255,0.1); }
-}
+    .wa-button img {
+      width: 35px;
+      height: 35px;
+    }
 
-.footprint {
-  position: fixed;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.9em;
-  color: rgba(255,255,255,0.7);
-  font-style: italic;
-  text-shadow: 1px 1px 3px black;
-}
+    @keyframes smokePulse {
+      0% { box-shadow: 0 0 15px 5px rgba(255,255,255,0.1); }
+      50% { box-shadow: 0 0 30px 15px rgba(255,255,255,0.3); }
+      100% { box-shadow: 0 0 15px 5px rgba(255,255,255,0.1); }
+    }
 
+    .footprint {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.9em;
+      font-weight: bold;
+      text-shadow: 1px 1px 3px #000;
+      animation: shine 3s linear infinite;
+      background: linear-gradient(90deg, #FFD700, #fffbe0, #FFD700);
+      background-size: 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @keyframes shine {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
   </style>
 </head>
 <body>
@@ -122,20 +132,26 @@ h1 {
     <source src="background.mp4" type="video/mp4" />
     Browser tidak mendukung video.
   </video>
-  <div id="overlay"></div>  <div class="content">
-    <h1>💥 MIE~LUNG 💥</h1>
-    <h1>💥 CEMILAN 💥</h1>
-   <h1>Paket Data,Token Listrik,Tf dll</h1><div class="slogan">"Satu Tempat, Tiga Rasa 3 in 1"</div>
-   <div class="grid-img">
-  <img src="mie.jpg" alt="mie" />
-  <img src="gorengan.jpg" alt="gorengan" />
-  <img src="counter.jpg" alt="paket" />
-</div>
+  <div id="overlay"></div>
 
-  </div>  <!-- WhatsApp Contact Button -->
-<a class="wa-button" href="https://wa.me/6285327309729" target="_blank">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA">
-</a>
-<div class="footprint">© 2025 mielung_enak_mantap_enyJOSSS</div>
+  <div class="content">
+    <h1>🍜 MIE~LUNG 🤤</h1>
+    <h1>🍟 CEMILAN 👍</h1>
+    <h1>📥 PULSA 📲</h1>
+    <div class="slogan">"Satu Tempat, Tiga Rasa 3 in 1"</div>
+    <div class="grid-img">
+      <img src="mie.jpg" alt="mie" />
+      <img src="gorengan.jpg" alt="gorengan" />
+      <img src="counter.jpg" alt="paket" />
+    </div>
+  </div>
+
+  <!-- WhatsApp Contact Button -->
+  <a class="wa-button" href="https://wa.me/6285327309729" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA">
+  </a>
+
+  <!-- Footprint -->
+  <div class="footprint">© 2025 mielung_enak_mantap_enyJOSSS</div>
 </body>
 </html>
